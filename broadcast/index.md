@@ -85,7 +85,10 @@ See us live every two weeks!
   </div>
 </div>
 
+<div markdown="1" class="previous-episode-header">
 ## Previous Episodes
+<a href="/broadcast/episodes.html">See all episodes</a>
+</div>
 <div class="episode-grid">
 {% for episode in site.episodes reversed limit:9 offset:last %}
   <div class="post-entry card">
@@ -104,10 +107,6 @@ See us live every two weeks!
     <a href="{{ site.baseurl }}{{ episode.url }}">Listen, watch, or read the show notes...</a>
   </div>
 {% endfor %}
-</div>
-
-<div style="text-align: right;">
-  <a class="button" href="/broadcast/episodes.html">See past episodes!</a>
 </div>
 
 </div>
