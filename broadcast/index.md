@@ -6,10 +6,10 @@ show_hero: true
 
 <div class="container container__broadcast">
 
-  <div class="row spacer-60">
-    <div class="col-md-12">
-
-<div markdown="1" class="leftcol widecol">
+<div class="row spacer-60">
+<div class="d-flex justify-content-between flex-column flex-lg-row" style="margin-bottom: 1rem;">
+<div markdown="1" class="col-lg-8">
+## About
 
 With great data comes even greater access latency. Welcome to the Trino
 Community Broadcast where we transform your latency woes to fast insights. Trino
@@ -24,28 +24,92 @@ and let us know there. Otherwise, you can message Manfred Moser or Brian Olsen
 directly on Slack or Twitter.
 
 See us live every two weeks!
+</div>
 
-
-<a class="button" href="/broadcast/episodes.html">See past episodes!</a>
-
+<div markdown="1" class="col-lg-3">
 ## Co-hosts
 
- - Brian Olsen [@bitsondatadev](https://twitter.com/bitsondatadev)
- - Manfred Moser [@simpligility](https://twitter.com/simpligility)
+- Brian Olsen [@bitsondatadev](https://twitter.com/bitsondatadev)
+- Manfred Moser [@simpligility](https://twitter.com/simpligility)
 
-## Where to watch or listen
-
- - Watch live on <a href="https://www.twitch.tv/trinodb" target="_blank">Trino Twitch</a>
- - Watch later on <a href="https://www.youtube.com/playlist?list=PLFnr63che7war_NzC7CJQjFuUKLYC7nYh" target="_blank">Youtube playlist</a>
- - Listen on <a href="https://podcasts.apple.com/us/podcast/trino-community-broadcast/id1533484786" target="_blank">Apple podcast</a>
- - Listen on <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMzc0NTMyLnJzcw==" target="_blank">Google podcast</a>
- - Listen on <a href="https://open.spotify.com/show/53ZrVCCmZSsEmvlNfzpWSL" target="_blank">Spotify</a>
-
-# Upcoming shows
-
-<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23dd00a1&amp;ctz=America%2FDetroit&amp;src=NDhibXJvaXVpZmg2NWJsZWNhOGxzNGhyNTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23D81B60&amp;mode=MONTH&amp;showCalendars=0&amp;showTz=1&amp;showTabs=1&amp;showPrint=0" style="border:solid 1px #777" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-
+## Watch/Listen
+- Watch:
+<a href="https://www.youtube.com/playlist?list=PLFnr63che7war_NzC7CJQjFuUKLYC7nYh" target="_blank">
+  <i class="fab fa-youtube watch-listen-icon" title="Youtube"></i>
+</a>
+<a href="https://www.twitch.tv/trinodb" target="_blank">
+  <i class="fab fa-twitch watch-listen-icon" title="Twitch"></i>
+</a>
+- Listen:
+<a href="https://podcasts.apple.com/us/podcast/trino-community-broadcast/id1533484786" target="_blank">
+  <i class="fab fa-apple watch-listen-icon" title="Apple"></i>
+</a>
+<a href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMzc0NTMyLnJzcw==" target="_blank">
+  <i class="fab fa-google watch-listen-icon" title="Google"></i>
+</a>
+<a href="https://open.spotify.com/show/53ZrVCCmZSsEmvlNfzpWSL" target="_blank">
+  <i class="fab fa-spotify watch-listen-icon" title="Spotify"></i>
+</a>
 </div>
+</div>
+<div markdown="1" class="col-md-12">
+## Upcoming shows
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23dd00a1&amp;ctz=America%2FDetroit&amp;src=NDhibXJvaXVpZmg2NWJsZWNhOGxzNGhyNTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23D81B60&amp;mode=AGENDA&amp;showCalendars=0&amp;showTz=1&amp;showTabs=0&amp;showPrint=0" style="border:solid 1px #777; margin-bottom: 2rem;" width="100%" height="240" frameborder="0" scrolling="no"></iframe>
+
+## Latest Episode
+{% assign latestEpisode =  site.episodes | last %}
+
+<div class="post-entry card latest-entry">
+  <div class="d-flex flex-column-reverse flex-lg-row justify-content-between">
+    <div class="latest-entry-text-container">
+      <h3><a class="post-link" href="{{ episode.url | relative_url }}">{{ latestEpisode.title | escape }}</a></h3>
+      <span class="post-meta">{{ latestEpisode.date | date: "%b %-d, %Y" }}</span>
+      <ul>
+        {% for section in latestEpisode.sections %}
+        <li>
+            {{section.title}}:
+            <a href="https://www.youtube.com/watch?v={{ latestEpisode.youtube_id}}&t={{ section.time }}s" target="_blank">
+            {{ section.desc }}
+            </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ site.baseurl }}{{ latestEpisode.url }}" style="margin-top: auto;">Listen, watch, or read the show notes...</a>
+    </div>
+    <div class="latest-entry-video-container">
+        <div class="latest-entry-video-wrapper">
+          <iframe src="https://www.youtube.com/embed/{{ latestEpisode.youtube_id }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+  </div>
+</div>
+
+## Previous Episodes
+<div class="episode-grid">
+{% for episode in site.episodes reversed limit:9 offset:last %}
+  <div class="post-entry card">
+    <h5><a class="post-link" href="{{ episode.url | relative_url }}">{{ episode.title | escape }}</a></h5>
+    <span class="post-meta">{{ episode.date | date: "%b %-d, %Y" }}</span>
+    <ul>
+      {% for section in episode.sections limit:3 %}
+      <li>
+          {{section.title}}:
+          <a href="https://www.youtube.com/watch?v={{ episode.youtube_id}}&t={{ section.time }}s" target="_blank">
+          {{ section.desc }}
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ site.baseurl }}{{ episode.url }}">Listen, watch, or read the show notes...</a>
+  </div>
+{% endfor %}
+</div>
+
+<div style="text-align: right;">
+  <a class="button" href="/broadcast/episodes.html">See past episodes!</a>
+</div>
+
 </div>
 </div>
 </div>
