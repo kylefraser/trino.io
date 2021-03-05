@@ -96,7 +96,11 @@ See us live every two weeks!
 <a href="/broadcast/episodes.html">See all episodes</a>
 </div>
 <div class="episode-grid">
-{% for episode in site.episodes reversed offset:1 limit:9 %}
+{% assign offsetNumber = site.episodes.size | minus: 10 %}
+{% for episode in site.episodes reversed offset:offsetNumber %}
+{% if forloop.first == true %}
+ {% continue %}
+{% else %}
   <div class="post-entry card">
     <h5><a class="post-link" href="{{ episode.url | relative_url }}">{{ episode.title | escape }}</a></h5>
     <span class="post-meta">{{ episode.date | date: "%b %-d, %Y" }}</span>
@@ -112,6 +116,7 @@ See us live every two weeks!
     </ul>
     <a href="{{ site.baseurl }}{{ episode.url }}">Listen, watch, or read the show notes...</a>
   </div>
+{% endif %}
 {% endfor %}
 </div>
 
