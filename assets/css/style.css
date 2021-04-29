@@ -148,7 +148,8 @@ footer .footer-copyright {font-size: 0.7rem;}
 .archives-title-link a:hover, .tag-align-bottom a:hover, .post-card .card-title a:hover {color:var(--pink);}
 .tag-align-bottom {margin-bottom:0;}
 .latest-blog {display:flex;flex-direction: row;margin-bottom:64px;align-items:center; padding: 1.5rem;}
-.latest-blog img {display:cover;max-width:400px;max-height:300px;margin-left:2rem;}
+.latest-blog img {object-fit:cover;max-width:400px;max-height:300px;margin-left:2rem;}
+.latest-blog-content img {object-fit:contain;margin-left:0;width:100%;}
 .post-card {margin:16px 0;}
 @media (max-width: 900px) {
   .card.mb-4 {

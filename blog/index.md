@@ -9,16 +9,14 @@ title: Trino blog
   <div class="col-12">
     {% for post in site.posts limit:1 %}
       <div class="latest-blog card">
-        <div>
+        <div class="latest-blog-content">
           <p style="font-weight:600;">The Latest</p>
           <h3 class="blog-title"><a href="{{ post.url }}">{{post.title}}</a></h3>
           <p class="caption">{{ post.date | date_to_string }} | {{ post.author }}</p>
           <p>{{ post.excerpt }}</p>
           <div class="blog-readmore"><a href="{{ post.url }}">Read More &rarr;</a></div>
         </div>
-        <div>
-          <img src="{{ post.image | default: '/assets/trino-og.png' }}">
-        </div>
+        <img src="{{ post.image | default: '/assets/trino-og.png' }}">
       </div>
     {% endfor %}
     <h3>Recent</h3>
